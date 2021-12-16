@@ -51,10 +51,19 @@ public class UdemyBasicExercise {
 
         }
         public static String[] listOfGuests(String[] name){
-
+            String[] nameTemp = new String[name.length];
+            for (int i = 0; i < name.length; i++) {
+                if (name[i] == null ){
+                    nameTemp[i] = name[i];
+                    name[i] = nameTemp[i];
+                }
+            }
             System.out.println("__________________\nGuests Lists:");
-            for (String s : name) {
-                System.out.println(s == null ? "--" : s);
+            for (int i = 0; i < name.length; i++) {
+                if (name[i] == null ){
+                    System.out.println( (i + 1 ) + ". --");
+                } else
+                System.out.println(i + ". " + name[i]);
             }
             return name;
         }
