@@ -1,85 +1,115 @@
-import java.sql.SQLOutput;
-import java.util.Arrays;
 import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
 
 
 public class UdemyBasicExercise {
 
-        static String[] name = new String[10];
-        static Scanner scanner = new Scanner(System.in);
-        //  static int option;
-        public static void main(String[] args) {
+    static String[] name = new String[10];
+    static Scanner scanner = new Scanner(System.in);
 
-            name[0] = "Vlad";
-            name[1] = "Olga";
-            name[2] = "Evgeny";
-            name[3] = "mama";
-            name[4] = "Andrey";
-            name[5] = "papa";
-            listOfGuests(name);
-            do {
-                displayMenu();
-                int option = getOption();
-                if (option == 1) {
-                    listOfGuests(name);
-                } else if (option == 2) {
-                    System.out.println("_____________________\nEnter new guest name");
-                    for (int i = 0; i < name.length; i++) {
-                        if (name[i] == null) {
-                            name[i] = scanner.next();
-                            break;
-                        }
+    public static void main(String[] args) {
 
-                    }
-                } else if (option == 3) {
-                    System.out.println("_________________\nDeleting");
-                    System.out.println("Enter name for deleting: ");
-                    String deleteName = scanner.next();
-                    for (int i = 0; i < name.length; i++) {
-                        if (name[i] != null && name[i].equals(deleteName)) {
-                            name[i] = null;
-                            break;
-                        }
-                    }
-                } else if (option == 4) {
-                    System.out.println("Exiting .... ");
-                    break;
-                }
-
-            } while (true);
-
-        }
-        public static String[] listOfGuests(String[] name){
-            String[] nameTemp = new String[name.length];
-            for (int i = 0; i < name.length; i++) {
-                if (name[i] == null ){
-                    nameTemp[i] = name[i];
-                    name[i] = nameTemp[i];
-                }
+        testName();
+        listOfGuests(name);
+        do {
+            displayMenu();
+            int option = getOption();
+            if (option == 1) {
+                listOfGuests(name);
+            } else if (option == 2) {
+                addGuest();
+            } else if (option == 3) {
+                deleteName();
+            } else if (option == 4) {
+                exit();
+                break;
             }
-            System.out.println("__________________\nGuests Lists:");
-            for (int i = 0; i < name.length; i++) {
-                if (name[i] == null ){
-                    System.out.println( (i + 1 ) + ". --");
-                } else
-                System.out.println(i + ". " + name[i]);
+        } while (true);
+    }
+
+
+    public static void listOfGuests(String[] name) {
+        String[] nameTemp = new String[name.length];
+        int ti = 0;
+        for (int i = 0; i < name.length; i++) {
+            if (name[i] != null) {
+                nameTemp[ti] = name[i];
+                ti++;
             }
-            return name;
         }
-        public static void displayMenu (){
-            System.out.println("_______________________\nMENU\n");
-            System.out.println(" 1 - See the list of guests.");
-            System.out.println(" 2 - Add new guest.");
-            System.out.println(" 3 - Delete guest. ");
-            System.out.println(" 4 - Exit.");
+        name = nameTemp;
+
+        System.out.println("__________________\nGuests Lists:");
+        boolean isEmpty = true;
+        for (int i = 0; i < name.length; i++) {
+            if (name[i] != null) {
+                System.out.println((i + 1) + ". " + name[i]);
+                isEmpty = false;
+            }
         }
-        public static int getOption(){
-            System.out.println("Option: ");
-            int option = scanner.nextInt();
-            return option;
+        if (isEmpty) {
+            System.out.println("Guess list is empty.");
+        }
+        // return name;
+    }
+
+    public static void displayMenu() {
+        System.out.println("_______________________\nMENU\n");
+        System.out.println(" 1 - See the list of guests.");
+        System.out.println(" 2 - Add new guest.");
+        System.out.println(" 3 - Delete guest. ");
+        System.out.println(" 4 - Exit.");
+    }
+
+    public static int getOption() {
+        System.out.println("Option: ");
+        int option = scanner.nextInt();
+        return option;
+    }
+
+    public static void addGuest() {
+        System.out.println("_____________________\nEnter new guest name");
+        for (int i = 0; i < name.length; i++) {
+            if (name[i] == null) {
+                name[i] = scanner.next();
+                break;
+            }
         }
     }
+
+    public static void deleteName() {
+        System.out.println("_________________\nDeleting");
+        System.out.println("Enter name for deleting: ");
+        int deleteNameNum = scanner.nextInt();
+        if (deleteNameNum >= 1 && deleteNameNum <= 10 && name[deleteNameNum - 1] != null) {
+            name[deleteNameNum - 1] = null;
+        }
+        else{
+            System.out.println("There's no guest with that number");
+        }
+    }
+         // String deleteName = scanner.next();
+        //for (int i = 0; i < name.length; i++) {
+        //    if (name[i] != null && name[i].equals(deleteName)) {
+        //        name[i] = null;
+        //        break;
+        //    }
+        //  }
+
+
+    public static void exit() {
+        System.out.println("Exiting .... ");
+    }
+
+    public static void testName() {
+        name[0] = "Vlad";
+        name[1] = "Olga";
+        name[2] = "Evgeny";
+        name[3] = "mama";
+        name[4] = "Andrey";
+        name[5] = "papa";
+
+    }
+}
 
 
 // sortirovka log2 sortirovka log2 sortirovka log2 sortirovka log2 sortirovka log2 sortirovka log2 sortirovka log2 sortirovka log2
