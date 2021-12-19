@@ -63,6 +63,8 @@ public class UdemyBasicExercise {
     public static int getOption() {
         System.out.println("Option: ");
         int option = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println();
         return option;
     }
 
@@ -70,7 +72,7 @@ public class UdemyBasicExercise {
         System.out.println("_____________________\nEnter new guest name");
         for (int i = 0; i < name.length; i++) {
             if (name[i] == null) {
-                name[i] = scanner.next();
+                name[i] = scanner.nextLine();
                 break;
             }
         }
