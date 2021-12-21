@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 
@@ -19,13 +20,11 @@ public class UdemyBasicExercise {
                 addGuest();
             } else if (option == 3) {
                 deleteName();
-            }else if (option == 4) {
-                    insertNameInAParticularPosition();
-                }
-            else if (option == 5) {
+            } else if (option == 4) {
+                insertNameInAParticularPosition();
+            } else if (option == 5) {
                 renameName();
-            }
-            else if (option == 6) {
+            } else if (option == 6) {
                 exit();
                 break;
             }
@@ -57,6 +56,15 @@ public class UdemyBasicExercise {
         }
         // return name;
     }
+
+    public static int getOption() {
+        System.out.println("Option: ");
+        int option = scanner.nextInt();
+        scanner.nextLine();
+     //   System.out.println();
+        return option;
+    }
+
     public static void displayMenu() {
         System.out.println("_______________________\nMENU\n");
         System.out.println(" 1 - See the list of guests.");
@@ -67,14 +75,6 @@ public class UdemyBasicExercise {
         System.out.println(" 6 - Exit.");
     }
 
-
-    public static int getOption() {
-        System.out.println("Option: ");
-        int option = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println();
-        return option;
-    }
 
     public static void addGuest() {
         System.out.println("_____________________\nEnter new guest name");
@@ -92,43 +92,50 @@ public class UdemyBasicExercise {
         int deleteNameNum = scanner.nextInt();
         if (deleteNameNum >= 1 && deleteNameNum <= 10 && name[deleteNameNum - 1] != null) {
             name[deleteNameNum - 1] = null;
-        }
-        else{
+        } else {
             System.out.println("There's no guest with that number");
         }
     }
 
-    public static void insertNameInAParticularPosition(){
+    public static void insertNameInAParticularPosition() {
+        String[] tempMassive = new String[name.length];
+        System.out.println("Enter a number of a guest: ");
+        int tempNum = scanner.nextInt();
+        if (tempNum > 0 && tempNum < name.length + 1) {
+            System.out.println("Enter new guest name: "); // ????????????????
+            scanner.nextLine();// ????????????????
+            String tempName = scanner.nextLine();// ????????????????
+                if (name[tempNum - 1] == null) {
+                    name[tempNum - 1] = tempName;
+                } else {
+                    for (int i = 0; i < name.length; i++) {
+                    // сюда попадает если tempNum != null
+                    //необходимо весь массив от tempNum подвинуть на одну еденицу влево и вставить на место tempNum
 
-
+                }
+            }
+        } else {
+            System.out.println("You entered a wrong number. Try again.\n It should be between 0 and " + name.length + ".");
+            insertNameInAParticularPosition();
+       }
     }
 
-    public static void renameName(){
+    public static void renameName() {
         System.out.println("_________________\nRename");
         System.out.println("Enter name for rename: ");
         String oldName = scanner.nextLine();
 
         for (int i = 0; i < name.length; i++) {
-            if(name[i] != null && name[i].equals(oldName)){
+            if (name[i] != null && name[i].equals(oldName)) {
                 System.out.println("Enter right name: ");
                 name[i] = scanner.nextLine();
                 break;
-            }else {
+            } else {
                 System.out.println("The name you entered is not in the list.");
             }
 
         }
     }
-
-
-        // String deleteName = scanner.next();
-        //for (int i = 0; i < name.length; i++) {
-        //    if (name[i] != null && name[i].equals(deleteName)) {
-        //        name[i] = null;
-        //        break;
-        //    }
-        //  }
-
 
     public static void exit() {
         System.out.println("Exiting .... ");
