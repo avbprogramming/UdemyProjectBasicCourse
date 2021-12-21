@@ -19,7 +19,13 @@ public class UdemyBasicExercise {
                 addGuest();
             } else if (option == 3) {
                 deleteName();
-            } else if (option == 4) {
+            else if (option == 4) {
+                    insertNameInAParticulerPosition();
+                }}
+            else if (option == 5) {
+                renameName();
+            }
+            else if (option == 6) {
                 exit();
                 break;
             }
@@ -51,14 +57,16 @@ public class UdemyBasicExercise {
         }
         // return name;
     }
-
     public static void displayMenu() {
         System.out.println("_______________________\nMENU\n");
         System.out.println(" 1 - See the list of guests.");
         System.out.println(" 2 - Add new guest.");
         System.out.println(" 3 - Delete guest. ");
-        System.out.println(" 4 - Exit.");
+        System.out.println(" 4 - Delete and add guest by name or number. ");
+        System.out.println(" 5 - Rename guest. ");
+        System.out.println(" 6 - Exit.");
     }
+
 
     public static int getOption() {
         System.out.println("Option: ");
@@ -80,7 +88,7 @@ public class UdemyBasicExercise {
 
     public static void deleteName() {
         System.out.println("_________________\nDeleting");
-        System.out.println("Enter name for deleting: ");
+        System.out.println("Enter name or number in the list of guest for deleting: ");
         int deleteNameNum = scanner.nextInt();
         if (deleteNameNum >= 1 && deleteNameNum <= 10 && name[deleteNameNum - 1] != null) {
             name[deleteNameNum - 1] = null;
@@ -89,7 +97,31 @@ public class UdemyBasicExercise {
             System.out.println("There's no guest with that number");
         }
     }
-         // String deleteName = scanner.next();
+
+    public static void insertNameInAParticulerPosition(){
+
+
+    }
+
+    public static void renameName(){
+        System.out.println("_________________\nRename");
+        System.out.println("Enter name for rename: ");
+        String oldName = scanner.nextLine();
+
+        for (int i = 0; i < name.length; i++) {
+            if(name[i] != null && name[i].equals(oldName)){
+                System.out.println("Enter right name: ");
+                name[i] = scanner.nextLine();
+                break;
+            }else {
+                System.out.println("The name you entered is not in the list.");
+            }
+
+        }
+    }
+
+
+        // String deleteName = scanner.next();
         //for (int i = 0; i < name.length; i++) {
         //    if (name[i] != null && name[i].equals(deleteName)) {
         //        name[i] = null;
