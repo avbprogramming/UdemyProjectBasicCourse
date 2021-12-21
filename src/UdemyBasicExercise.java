@@ -19,9 +19,9 @@ public class UdemyBasicExercise {
                 addGuest();
             } else if (option == 3) {
                 deleteName();
-            else if (option == 4) {
-                    insertNameInAParticulerPosition();
-                }}
+            }else if (option == 4) {
+                    insertNameInAParticularPosition();
+                }
             else if (option == 5) {
                 renameName();
             }
@@ -98,7 +98,7 @@ public class UdemyBasicExercise {
         }
     }
 
-    public static void insertNameInAParticulerPosition(){
+    public static void insertNameInAParticularPosition(){
 
 
     }
