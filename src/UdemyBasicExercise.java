@@ -1,4 +1,5 @@
 import java.sql.SQLOutput;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -102,17 +103,20 @@ public class UdemyBasicExercise {
         System.out.println("Enter a number of a guest: ");
         int tempNum = scanner.nextInt();
         if (tempNum > 0 && tempNum < name.length + 1) {
-            System.out.println("Enter new guest name: "); // ????????????????
-            scanner.nextLine();// ????????????????
-            String tempName = scanner.nextLine();// ????????????????
+            System.out.println("Enter new guest name: ");   // ????????????????
+            scanner.nextLine();                             // ????????????????
+            String tempName = scanner.nextLine();           // ????????????????
                 if (name[tempNum - 1] == null) {
                     name[tempNum - 1] = tempName;
                 } else {
-                    for (int i = 0; i < name.length; i++) {
+                    tempMassive = Arrays.copyOfRange(name, tempNum - 1, name.length);
+                    name[tempNum] = tempName;
+                    name = Arrays.copyOfRange(tempMassive, tempNum + 1, name.length);
+// http://espressocode.top/how-to-insert-an-element-at-a-specific-position-in-an-array-in-java/
+                    // for (int i = 0; i < name.length; i++) {
                     // сюда попадает если tempNum != null
-                    //необходимо весь массив от tempNum подвинуть на одну еденицу влево и вставить на место tempNum
-
-                }
+                    //необходимо весь массив от tempNum подвинуть на одну единицу влево и вставить на место tempNum
+                    //}
             }
         } else {
             System.out.println("You entered a wrong number. Try again.\n It should be between 0 and " + name.length + ".");
