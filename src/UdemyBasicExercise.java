@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -22,7 +21,7 @@ public class UdemyBasicExercise {
             } else if (option == 3) {
                 deleteName();
             } else if (option == 4) {
-                insertNameInAParticularPosition();
+                insertGuest();
             } else if (option == 5) {
                 renameName();
             } else if (option == 6) {
@@ -71,7 +70,7 @@ public class UdemyBasicExercise {
         System.out.println(" 1 - See the list of guests.");
         System.out.println(" 2 - Add new guest.");
         System.out.println(" 3 - Delete guest. ");
-        System.out.println(" 4 - Delete and add guest by name or number. ");
+        System.out.println(" 4 - Insert. ");
         System.out.println(" 5 - Rename guest. ");
         System.out.println(" 6 - Exit.");
     }
@@ -98,30 +97,21 @@ public class UdemyBasicExercise {
         }
     }
 
-    public static void insertNameInAParticularPosition() {
-        String[] tempMassive = new String[name.length];
-        System.out.println("Enter a number of a guest: ");
-        int tempNum = scanner.nextInt();
-        if (tempNum > 0 && tempNum < name.length + 1) {
-            System.out.println("Enter new guest name: ");   // ????????????????
-            scanner.nextLine();                             // ????????????????
-            String tempName = scanner.nextLine();           // ????????????????
-                if (name[tempNum - 1] == null) {
-                    name[tempNum - 1] = tempName;
-                } else {
-                    tempMassive = Arrays.copyOfRange(name, tempNum - 1, name.length);
-                    name[tempNum] = tempName;
-                    name = Arrays.copyOfRange(tempMassive, tempNum + 1, name.length);
-                    //  http://espressocode.top/how-to-insert-an-element-at-a-specific-position-in-an-array-in-java/
-                    //  for (int i = 0; i < name.length; i++) {
-                    //  сюда попадает если tempNum != null
-                    //  необходимо весь массив от tempNum подвинуть на одну единицу влево и вставить на место tempNum
-                    //  }
+    public static void insertGuest() {
+        System.out.println("Number: ");
+        int num = scanner.nextInt();            //  ????
+        scanner.nextLine();                     //  ????
+
+        if(num >= 0 && num <= name.length + 1){
+            System.out.println("Enter a name: ");
+            String guestName = scanner.nextLine();
+           // scanner.nextLine();
+            for (int i = (name.length - 1); i < (num - 1) ; i--) {
+            name[i] = name[(i - 1)];
+            name[num - 1] = guestName;
             }
-        } else {
-            System.out.println("You entered a wrong number. Try again.\n It should be between 0 and " + name.length + ".");
-            insertNameInAParticularPosition();
-       }
+        }
+        System.out.println(Arrays.toString(name));
     }
 
     public static void renameName() {
