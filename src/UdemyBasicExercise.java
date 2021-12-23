@@ -112,11 +112,11 @@ public class UdemyBasicExercise {
                     tempMassive = Arrays.copyOfRange(name, tempNum - 1, name.length);
                     name[tempNum] = tempName;
                     name = Arrays.copyOfRange(tempMassive, tempNum + 1, name.length);
-// http://espressocode.top/how-to-insert-an-element-at-a-specific-position-in-an-array-in-java/
-                    // for (int i = 0; i < name.length; i++) {
-                    // сюда попадает если tempNum != null
-                    //необходимо весь массив от tempNum подвинуть на одну единицу влево и вставить на место tempNum
-                    //}
+                    //  http://espressocode.top/how-to-insert-an-element-at-a-specific-position-in-an-array-in-java/
+                    //  for (int i = 0; i < name.length; i++) {
+                    //  сюда попадает если tempNum != null
+                    //  необходимо весь массив от tempNum подвинуть на одну единицу влево и вставить на место tempNum
+                    //  }
             }
         } else {
             System.out.println("You entered a wrong number. Try again.\n It should be between 0 and " + name.length + ".");
