@@ -102,14 +102,16 @@ public class UdemyBasicExercise {
         int num = scanner.nextInt();            //  ????
         scanner.nextLine();                     //  ????
 
-        if(num >= 0 && num <= name.length + 1){
+        if(num >= 1 && num <= name.length && name[num - 1] != null ){
             System.out.println("Enter a name: ");
             String guestName = scanner.nextLine();
            // scanner.nextLine();
-            for (int i = (name.length - 1); i < (num - 1) ; i--) {
+            for (int i = (name.length - 1); i > (num - 1) ; i--) {
             name[i] = name[(i - 1)];
-            name[num - 1] = guestName;
             }
+            name[num -1 ] = guestName;
+        } else {
+            System.out.println("No such user or name. ");
         }
         System.out.println(Arrays.toString(name));
     }
@@ -136,12 +138,12 @@ public class UdemyBasicExercise {
     }
 
     public static void testName() {
-        name[0] = "Vlad";
+        name[0] = "Я";
         name[1] = "Olga";
         name[2] = "Evgeny";
-        name[3] = "mama";
+        name[3] = "Лилия";
         name[4] = "Andrey";
-        name[5] = "papa";
+        name[5] = "Борис";
 
     }
 }
