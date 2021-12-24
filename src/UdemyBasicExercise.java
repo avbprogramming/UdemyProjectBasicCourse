@@ -139,10 +139,10 @@ public class UdemyBasicExercise {
 
     public static void testName() {
         name[0] = "Я";
-        name[1] = "Olga";
-        name[2] = "Evgeny";
+        name[1] = "Ольга";
+        name[2] = "Евгений";
         name[3] = "Лилия";
-        name[4] = "Andrey";
+        name[4] = "Андрей";
         name[5] = "Борис";
 
     }
